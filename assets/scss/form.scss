@@ -1,0 +1,65 @@
+
+// style the all forms at one place
+form{
+    display: grid;
+    gap:10px;
+    padding:5%;
+    justify-content:center;
+    justify-items:center;
+    margin:auto;
+    grid-template-columns: 1fr;
+    &>div{
+        max-width: 400px;
+    }
+    .update-form{
+        max-width:100%;
+    }
+    input,select{
+        border-radius: 5px;
+    }
+    input, textarea{
+        padding:5px 10px;
+        font-size: 1.1em;
+        color:#424141;
+        width:100%;
+        border:none;
+        background-color: rgba(245, 222, 179, 0.568);
+        border-radius: 5px;
+    }
+    input[type=number]{
+        width:7em;
+    }
+    select{
+        padding:5px 10px;
+        background-color: #18193f;
+        border:none;
+        color:white;
+        font-size: inherit;
+        box-shadow: 0 0 2px 2px rgba(194, 194, 194, 0.534);
+
+    }
+    button{
+        place-self: center;
+    }
+
+}
+
+
+// updated forms that are responsive
+.update-form{
+    display: grid;
+    gap:20px;
+    justify-content: center;
+    margin:auto;
+    width:100%;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    &>div{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+        // grid-template-columns: max-content repeat(auto-fit,100px);
+        gap:10px;
+        align-content: center;
+        align-items: center;
+        box-shadow: 0 0 2px 2px rgba(245, 245, 245, 0.507);
+    }
+}

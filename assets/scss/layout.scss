@@ -1,0 +1,106 @@
+// root classes that will i used i defferent tags
+html{
+  // background-color: da;
+  width: 100%;
+  height: 100%;
+  margin:0;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.795);
+  text-shadow: 0 0 2px 2px rgba(6, 18, 121, 0.507);
+  h1,h2,h3,h4,h5,p{
+    margin:0px;
+    padding: 5px 10px;
+    color: rgba(0, 0, 0, 0.795);
+  }
+  small{
+    margin:0px;
+    padding:0px;
+  }
+  a{
+    text-decoration: none;
+    color: rgb(35, 240, 144);
+    user-select: none;
+    line-height: 1.5em;
+    &:hover{
+      text-decoration: underline;
+    }
+    &:active{
+      text-decoration: none;
+    }
+  }
+  body{
+    margin:0px;
+    padding:0px;
+  }
+  & *{
+    box-sizing: inherit;
+  }
+  //warning or status colors
+  .green{
+    color: rgb(0, 255, 0);
+  }
+  .red{
+    color: rgb(255, 0, 0);
+  }
+  .yellow{
+    color: rgb(255, 251, 0);
+  }
+  .btn,button{
+    background-color: rgb(77, 3, 121);
+    color:rgb(35, 240, 144);
+    padding:3px 10px;
+    font-size: 1em;
+    border:1px solid rgb(38, 2,60);
+    width:auto; 
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    &:hover{
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    }
+    &:active{
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3) inset;
+    }
+  }
+  main{
+    display: grid;
+    grid-template-columns: 1fr;
+    width:95%;
+    margin:5vh auto;
+  }
+  // to place elements in center.
+  .place-center{
+    display: grid;
+    place-items: center center;
+  }
+  // if there is two element and you want them to we far away
+  .place-apart{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .head1{
+    margin:20px;
+    font-size: 2em;
+    text-transform: capitalize;
+  }
+
+}
+
+
+// style for header only 
+body>header {
+  background-color: rgb(8, 6, 32);
+  width:100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.dashboard{
+  display: grid;
+  grid-template-columns:minmax(300px,1fr) minmax(200px,auto);
+}
+

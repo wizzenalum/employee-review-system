@@ -1,0 +1,21 @@
+<script src="/scripts/index.js"></script>
+<main>
+    <div class="dashboard">
+        <div>
+            <% if(locals.userReadUpdate){%>
+                <%- include('./partials/_user') %>
+                <div>
+                    <h3 class = "head1">create performance</h3>
+                    <%-include('./partials/_performance') %>
+                </div>
+                
+                <!-- including the list file for hte user                     -->
+                   <%- include('./partials/_performance-list') %>
+                
+            <%}else{%>
+                <%- include('./partials/_signup-form') %>
+            <%}%>            
+        </div>
+        <%- include('./partials/_reviewee-list') %>
+    </div>
+</main>

@@ -1,0 +1,15 @@
+<header>
+  <nav>
+    <!-- here i am changing the removing the dead link on which i am currently. -->
+    <% if(locals.urlPath.substring(0,6)==="/admin"){%> <a href="/employee">Employee dashboard</a> <%}%>
+    <% if(locals.urlPath==="/employee" && locals.user.userType==="admin"){%> <a href="/admin">Admin dashboard</a> <%}%>
+    <% if(locals.urlPath==="/employee" && locals.user.userType==="employee" && locals.user.listToReview.length>0){%> <a href="/admin">Review assigned Employee</a> <%}%>
+  </nav>
+  <!-- add user actual detatil -->
+ <div class="user">
+    <% if(locals.user)   {%>
+      <a href=""><%= user.name %></a><a href="/user/session/destroy">sign-out</a>
+    <%}%>
+ </div>  
+ 
+</header>

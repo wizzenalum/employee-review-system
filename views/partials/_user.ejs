@@ -1,0 +1,90 @@
+ <!-- form to create signup -->
+ <link rel="stylesheet" href="/styles/form.css"> 
+ <form id = "signup-form" 
+        <% if(locals.user.userType==='admin'){%>
+            action="/user/<%=userReadUpdate.id%>/update"
+        <%}%>
+         method="post">
+      <div class="update-form">
+
+          <div class = "input-field">
+              <lable>Employee Name</lable>
+             <% if(locals.user.userType==='admin'){%>
+                 <input name="name" required type="text" defaultValue="<%= userReadUpdate.name%>" />
+             <%}else{%>
+                 <div class="input-replace"> <%= userReadUpdate.name %></div>
+             <%}%>
+             
+          </div>
+          <div class = "input-field">
+              <lable>Email</lable>
+              <% if(locals.user.userType==='admin'){%>
+                 <input name="email" defaultValue="<%= userReadUpdate.email%>" required type="email" />
+              <%}else{%>
+                 <div class="input-replace"><%= userReadUpdate.email%></div>
+             <%}%>
+          </div>
+          <div class="select-field">
+              <lable>Is she/he admin?</lable>
+              <% if(locals.user.userType==="admin"){%>
+                 <select  class="green" name="userType" required>
+                     <% if(userReadUpdate.userType==="admin"){%>
+                         <option value="admin" selected > Yes </option>
+                         <option value="employee"> No </option>
+                     <%}else{%>
+                         <option value="admin"  > Yes </option>
+                         <option value="employee" selected> No </option>
+                     <%}%>
+                 </select>
+             <%}else{%>
+                 <div class="select-replace">
+                     <% if(userReadUpdate.userType==="admin"){%>
+                         Yes
+                     <%}else{%>
+                         NO
+                     <%}%>
+                 </div>
+             <%}%>
+          </div>
+          <div class="select-field">
+             <lable>Department</lable>
+             <% if(locals.user.userType==="admin"){%>
+                 <select name="department" required>
+                     <% if(userReadUpdate.department==="HR"){%>
+                         <option value="HR" selected>human resource </option>
+                     <%}else{%>
+                         <option value="HR">human resource </option>
+                     <%}%>
+                     <% if(userReadUpdate.department==="Sales"){%>
+                         <option value="Sales" selected>Sales </option>
+                     <%}else{%>
+                         <option value="Sales">Sales</option>
+                     <%}%>
+                     <% if(userReadUpdate.department==="Production"){%>
+                         <option value="Production" selected>Production </option>
+                     <%}else{%>
+                         <option value="Production">Production</option>
+                     <%}%>
+                     <% if(userReadUpdate.department==="Marketing"){%>
+                         <option value="Marketing" selected>Marketing </option>
+                     <%}else{%>
+                         <option value="Marketing">Marketing</option>
+                     <%}%>
+                 </select>
+             <%}else{%>
+                     <div class="select-replace"><%=userReadUpdate.department%></div>
+             <%}%>
+          </div>
+      </div>   
+     
+     <% if(locals.user.userType==='admin'){%>
+        <div >
+            <button type="submit">Update</button>   
+            <% if(userReadUpdate){%>
+                 
+                <a class= "btn" href="/user/<%=userReadUpdate.id%>/delete">delete</a>
+            <%}%>
+        </div>
+    <%}%>
+ </form>
+ 

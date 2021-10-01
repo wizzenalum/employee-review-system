@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/styles/lists.css">
+<% if(userReadUpdate.performanceList.length>0) {%> 
+<div class="performance-list-container">
+    <h1 class="head1">performances</h1>
+    <div class="performance-list">
+        <% for(let performance of userReadUpdate.performanceList) {%>
+            <div class="performance-container">
+                <div id="<%=performance.id%>" class="performance">
+                    <div class="place-apart">
+                        <div>
+                            <small>review by</small> <h2><%=performance.reviewBy.name%></h2>
+                            <% if(performance.ranking>=7){%>
+                                <p class = "green">rank :<%=performance.ranking%></p>
+                            <%}else if(performance.ranking>=4){%>
+                                <p class = "yellow">rank :<%=performance.ranking%></p>
+                            <%}else{%>
+                                <p class = "red">rank :<%=performance.ranking%></p>
+                            <%}%>
+                        </div>
+                        <% if(locals.urlPath.substring(0,7)==="/admin/"){%>
+                            <a href="/performance/<%=performance.id%>/delete">delete</a>
+                        <%}%>
+                    </div>
+                    <p><%=performance.description%></p>
+                </div>
+                 <!-- creating the feed back -->
+                 <% if(locals.urlPath==="/employee"){%>
+                    <form action="/feedback/create" method="post">
+                        <input type="hidden" name="feedbackBy" defaultValue=<%=userReadUpdate.id%> >
+                        <input type="hidden" name="feedbackFor" defaultValue="<%=performance.id%>" >
+                        <textarea name="description" rows="3"></textarea>
+                        <button type="submit">feedback</button>
+                    </form>
+                <%}%>
+                <% if(performance.feedback.length>0){%>
+                    <h5> feedbacks</h5>
+                    <% for(let feedback of performance.feedback){%>
+                        <div>
+                            
+                            <% if(locals.urlPath==="/employee"){%>
+                                <a href="/feedback/<%=feedback.id%>/delete">delete</a>
+                            <%}%>
+                            <form action="/feedback/<%=feedback.id%>/update" method="post">
+                                <% if(locals.urlPath==="/employee"){%>
+                                    <input type="hidden" name="feedbackBy" defaultValue=<%=userReadUpdate.id%> >
+                                    <input type="hidden" name="feedbackFor" defaultValue="<%=performance.id%>" >
+                                    <textarea name="description" rows="3" onchange="this.form.submit()"><%=feedback.description%></textarea>  
+                                <%}else{%>
+                                    <div class="textarea-replace"><%=feedback.description%></div>
+                                <%}%>
+                                
+    
+                            </form>
+                        </div>
+    
+                    <%}%>
+                <%}%>
+                 
+    
+    
+            </div>
+        <%}%>
+    </div>
+</div>
+<%}%>

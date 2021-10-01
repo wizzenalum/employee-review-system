@@ -1,0 +1,25 @@
+<script src="/scripts/forms-view.js"></script>
+<link rel="stylesheet" href="/styles/form.css"> 
+<main>
+  <header class = "place-center">
+    <div> Sign in as 
+      <a id = "signin-employee-btn">Employee  /</a>
+      <a id="signin-admin-btn">Admin</a>
+
+    </div>
+  </header>
+  <div>
+    <form id = "signin-form" action="/employee/create-session" method="post">
+        <div class = "label-field">
+            <lable>Email</lable>
+            <input name="email" required type="email" />
+        </div>
+        <div class = "label-field">
+            <lable>Password</lable>
+            <input name="password" required type="password" />
+        </div>
+      <button type="submit">Submit</button>
+    </form>    
+  </div>
+</main>
+

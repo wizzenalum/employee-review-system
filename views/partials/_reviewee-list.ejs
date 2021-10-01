@@ -1,0 +1,51 @@
+<aside>
+    <!-- if login user is admin then admin will have employee creation option -->
+    <%if(locals.user.userType=='admin'){%>
+        <%if(locals.userReadUpdate && locals.urlPath==`/admin/${userReadUpdate.id}`){%>
+            <a href="/admin">Create employee or admin</a>
+        <%}%>
+        <!-- if the admin is on the emplloyee dashboard then link to rewie employee -->
+        <%if(locals.urlPath=='/employee'){%>
+            <br>
+            <a href="/admin">Review employees</a>
+        <%}%>
+        <!-- if login user is employee then he make or delete request -->
+    <%}else if(locals.user.userType=='employee'){%>
+        <%= locals.user.isRequested%>
+        <%if(!locals.user.isRequested){%>
+            <form action="/request/create" method="post">
+                <input type="hidden" name="requestBy" defaultValue="<%= userReadUpdate.id %>">
+                <button type="submit">Request to admin</button>
+            </form>
+        <%}else{%>
+            <form action="/request/<%=userReadUpdate.isRequested%>/delete" method="post">
+                <input type="hidden" name="requestBy" defaultValue="<%= userReadUpdate.id %>">
+                <button type="submit">delete Request</button>
+            </form>
+        <%}%>
+    <%}%>
+    <div>
+    <% if(revieweeList.length>0){%>
+        <div>
+            <h1>revieweeList</h1>
+            <%for(let reviewee of revieweeList){%>
+                <div class="place-apart">
+                    <a href="/admin/<%=reviewee.id%>"><%=reviewee.name%></a>
+                    <%if(locals.user.userType=='admin' && reviewee.isRequested){%>
+                        <!-- <form action="/user/<%= reviewee.id %>/update" method="post">
+                            <input type="hidden" name="userType" defaultValue="admin">
+                            <button type="submit">Confirm </button>
+                        </form> -->
+                        <form action="/request/<%=reviewee.isRequested%>/delete" method="post">
+                            <input type="hidden" name="requestBy" defaultValue="<%= reviewee.id %>">
+                            <button type="submit">Delete Request</button>
+                        </form>
+                        
+                    <%}%>
+                </div>
+            <%}%>
+        </div>
+    <%}%>
+    </div>       
+
+</aside>

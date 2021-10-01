@@ -1,0 +1,120 @@
+# routes for ******  HOME page ****
+###
+GET http://localhost:8000/admin HTTP/1.1
+###
+GET http://localhost:8000/admin/615556a28bfd9cc2064ee844 HTTP/1.1
+### 
+GET http://localhost:8000/employee HTTP/1.1
+
+
+
+
+### ****************      USER  **********
+
+
+
+### link to create first admin 
+get http://localhost:8000/user/wizzenalum HTTP/1.1
+
+### sign in sign up form will appear here toggle by js. 
+get http://localhost:8000/ HTTP/1.1
+
+###NOTICE:change data for user
+post http://localhost:8000/user/create HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+userType=admin
+&name=aarti
+&email=a@a
+&password=aa
+&confirmPassword=aa
+&department=Production
+
+###NOTICE:update login and password
+post http://localhost:8000/user/session/create/true HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+email=a@a
+&password=aa
+### SIGN--OUT
+get http://localhost:8000/user/session/destroy HTTP/1.1
+
+###NOTICE:push to listToReview
+post http://localhost:8000/user/:id/push-reviews HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+users="[fkafk,fklja,jlkfajj]"
+
+###  update the user values NOTICE:change data and id 
+post http://localhost:8000/user/615420f8d461552831866c07/update HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=ghanshyam
+
+### deelte the user NOTICE:change id.
+DELETE http://localhost:8000/user/61542100d461552831866c09/delete HTTP/1.1
+
+
+
+
+
+### ****************      PERFORMANCE     **********
+
+
+
+###create the performance  NOTICE:update form data
+post http://localhost:8000/performance/create HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+reviewFor=userID
+&ranking=10
+&description=some thing that i like to do most
+
+### update the data of performance  NOTICE:update ID
+post http://localhost:8000/performance/:id/update HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+description=many thing that i like to do most
+&ranking=1
+### deelte the performance NOTICE:change id.
+DELETE http://localhost:8000/performance/:id/delete HTTP/1.1
+
+
+
+
+
+### ****************      FEEDBACK     **********
+
+
+
+###create the feedback  NOTICE:update form data
+post http://localhost:8000/feedback/create HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+feedbackFor=performanceId
+&description=some thing that i like to do most
+
+### update the data of feedback  NOTICE:update ID
+post http://localhost:8000/feedback/:id/update HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+description=many thing that i like to do most
+### deelte the feedback NOTICE:change id.
+DELETE http://localhost:8000/feedback/:id/delete HTTP/1.1
+
+
+
+
+
+### ****************      REQUEST     **********
+
+
+
+###create the request  NOTICE:update form data
+post http://localhost:8000/request/create HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+requestBy=userID
+
+### deelte the request NOTICE:change id.
+DELETE http://localhost:8000/request/:id/delete HTTP/1.1

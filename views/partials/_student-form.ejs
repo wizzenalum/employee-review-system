@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/styles/form.css"> 
+<!-- form to create students  -->
+<div>
+  <form id = "create-student-form" class = "overlay-form" action="/student/create" method="post">
+    <button class = "btn" type="button" id = "close-form"> close </button> 
+    <div class = "label-field">
+        <lable>Student name</lable>
+        <input name="name" type="text"  required />
+      </div>
+      <!-- batch selection option will provide the all the batches in option -->
+      <div class="select">
+        <label for="select-batch">Select batch</label>
+
+        <!-- here only unfilled batches will show. -->
+        <select id="select-batch" name="batch" required>
+          <% if(batchList){for(let batch of batchList){ if(batch.students.length < batch.limit){%>
+
+            <option value= <%= batch._id %> ><%= batch.name+"  "+"  cap: "+ batch.students.length +"/"+batch.limit %> </option>
+          <%}}}%>
+        </select>
+      </div>      
+      <div class = "label-field">
+        <lable>College name</lable>
+        <input name="college" type="text" required/>
+      </div>
+      <!-- status of student  -->
+      <div class="select">
+        <label for="select-status">Select status</label>
+        <select id="select-status" name="status" required>
+          <option value="Placed">Placed to a company</option>
+          <option value="Not Placed">not placed</option>
+          <option value="Unknown">status is unknown</option>
+        </select>
+      </div>
+      <h2>Courses score</h2>
+      <div>
+        <div class = "label-field">
+          <label for="dsa">Data structure and algorithm</label
+          ><input type="number" max = 100 min = 0 name="dsa" id="dsa"  required/>
+        </div>
+        <div class = "label-field">
+          <label for="web">web development</label
+          ><input type="number" max = 100 min = 0 name="web" id="web"  required/>
+        </div>
+        <div class = "label-field">
+          <label for="react">react course</label
+          ><input type="number" max = 100 min = 0 name="react" id="react"  required/>
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+</div> 

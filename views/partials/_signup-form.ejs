@@ -1,0 +1,41 @@
+ <!-- form to create signup -->
+<link rel="stylesheet" href="/styles/form.css"> 
+<form id = "signup-form" action="/user/create" method="post">
+    <div class="update-form">
+
+        <div class = "input-field">
+            <lable>Employee name</lable>
+            <input name="name" required type="text" />
+        </div>
+        <div class = "input-field">
+            <lable>Email</lable>
+            <input name="email" required type="email" />
+        </div>
+        <div class="select-field">
+            <lable>Is she/he admin?</lable>
+            <select  name="userType" required>
+                  <option value="admin" > Yes </option>
+                  <option value="employee" selected> No </option>
+              </select>
+        </div>
+        <div class="select-field">
+            <lable>Select department.</lable>
+            <select name="department" required>
+                  <option value="HR" >human resource </option>
+                  <option value="Sales" > sales </option>
+                  <option value="Production" selected> Production </option>
+                  <option value="Marketing"> Marketing </option>
+              </select>
+        </div>
+        <div class = "input-field">
+            <lable>Password</lable>
+            <input name="password" required type="password" />
+        </div>
+        <div class = "input-field">
+            <lable>Confirm password</lable>
+            <input name="confirmPassword" required type="password" />
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
