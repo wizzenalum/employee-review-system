@@ -2,18 +2,18 @@
 This application has following features with three views
 1. Admin view
 ```sh
-Add/remove/update/view employees\
-Add/update/view performance reviews\
+Add/remove/update/view employees
+Add/update/view performance reviews
 Assign employees to participate in another employee's performance review
 ```
 2. Employee view
 ```sh
-List of performance review requiring feedback \
+List of performance review requiring feedback 
 An employee can register, only admin can make an employee an admin
 ```
 3. sign in for admin and user.
 ```sh
-also has super user for initialting the application once\
+also has super user for initialting the application once
 Make 1 login for admin and employee
 ```
 
@@ -54,23 +54,23 @@ npm start
 ## File structure
 here you are looking at directory structure with root level files only.
 ```sh
-employee-review-system\
-├── assets\
-│   ├── images\
-│   ├── scripts\
-│   ├── scss\
-│   └── styles\
-├── node-modules\
-├── configs\
-├── controllers\
-├── index.js\
-├── models\
-├── package-lock.json\
-├── package.json\
-├── readme.md\
-├── routers\
-└── views\
-    ├── authentication\
+employee-review-system
+├── assets
+│   ├── images
+│   ├── scripts
+│   ├── scss
+│   └── styles
+├── node-modules
+├── configs
+├── controllers
+├── index.js
+├── models
+├── package-lock.json
+├── package.json
+├── readme.md
+├── routers
+└── views
+    ├── authentication
     └── partials
 ```
 
