@@ -36,6 +36,7 @@ module.exports.employeeForAdmin = async function (req, res) {
   try {
     let revieweeList = [];
     let loginUser = res.locals.user;
+    console.log(loginUser.listToReview)
     const userReadUpdate = await User.findById(req.params.id)
         .populate({
             path:'performanceList',
@@ -47,7 +48,13 @@ module.exports.employeeForAdmin = async function (req, res) {
     if(loginUser.userType==='admin'){
       revieweeList = await User.find({});
     }else{
-      revieweeList = await(User.find(loginUser.listToReview))
+      let list = [];
+      for(let r of loginUser.listToReview){
+        list.push(r.toString());
+        console.log(r.toString());
+      }
+      // let list =  loginUser.listToReview.map((i,v)=>listToReview[v].toString())
+      revieweeList = await(User.find({_id: {$in: list}}));
     }
 
     let context = {

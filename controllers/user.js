@@ -1,5 +1,6 @@
 const passport = require("passport");
-const {Request,User,Performance,Feedback} = require("../models")
+const {Request,User,Performance,Feedback} = require("../models");
+const { param } = require("../routers");
 
 // super user function to create first user
 // TODO:secure it
@@ -123,12 +124,17 @@ module.exports.sessionDestroy = function (req, res) {
 module.exports.pushReivews = async function (req, res) {
   // TODO not checked of verified the logic.
   try {
-    let users = JSON.parse(req.body.users);
-    console.log(users,users[0])
-    if(users===Array){
-      for(let reviewer of users){
+    console.log(req.params)
+    console.log(req.body)
+    let reviewedUser = await User.findById(req.params.id)
+    if(reviewedUser && req.body.asign){
+      if(typeof(req.body.asign)==='string'){
+        await User.findByIdAndUpdate(req.body.asign,{$push:{"listToReview":reviewedUser.id}});
+        return res.redirect('back');
+      }
+      for(let reviewer of req.body.asign){
         try {
-          await User.findByIdAndUpdate(reviewer,{PerformanceList:[{$push:req.body.params}]})
+          await User.findByIdAndUpdate(reviewer,{$push:{"listToReview":reviewedUser.id}});
         } catch (error) {
           console.log(reviewer, "not granted access for review",error);
         }

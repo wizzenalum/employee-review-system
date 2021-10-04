@@ -24,7 +24,11 @@ module.exports.create = async function (req, res) {
 //update performance 
 module.exports.update = async function (req, res) {
   try {
-    await Performance.findByIdAndUpdate(req.params.id,req.body);
+    if(req.body.reviewBy===res.locals.user.id){
+      await Performance.findByIdAndUpdate(req.params.id,req.body);
+    }else{
+      console.log('you are not same user');
+    }
     return res.redirect('back');
   } catch (error) {
     console.log(error);

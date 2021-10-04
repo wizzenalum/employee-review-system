@@ -56,7 +56,7 @@ passport.autherizedAdmin=function(req,res,next){
   }
   else {
     console.log("you are not autherised admin.");
-    return res.end
+    return res.end("you are not autherized admin")
   }
 }
 passport.autherizedUser=function(req,res,next){

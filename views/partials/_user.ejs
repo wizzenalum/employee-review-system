@@ -81,10 +81,11 @@
         <div >
             <button type="submit">Update</button>   
             <% if(userReadUpdate){%>
-                 
+                <a  id = "assign-open" class= "btn">review assign</a>                 
                 <a class= "btn" href="/user/<%=userReadUpdate.id%>/delete">delete</a>
             <%}%>
         </div>
     <%}%>
  </form>
+ <%- include('./_assign-review-employee.ejs')%>
  

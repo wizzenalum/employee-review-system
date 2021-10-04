@@ -4,8 +4,9 @@ $('input').each((index,value)=>{
   })
 
 $('.onchange-send-form').each((index,node)=>{
+
   node.addEventListener('blur',(e)=>{
-    if(node.parentNode.children[0].value.toString()!==index.innerText.toString()){
+    if(node.innerText.toString()!==node.parentNode.children[1].value.toString()){
       node.parentNode.children[1].value = node.innerText;
       node.parentNode.children[1].form.submit();
     }
@@ -26,3 +27,16 @@ closeBtn.click(()=>{
   sidePanal.css('visibility','hidden');
 })
 
+
+
+// handling the visibility of the the assign form 
+const assignCloseBtn = $('#assign-close');
+const assignForm = $('#assign-form');
+const assignOpenBtn = $('#assign-open')
+
+assignCloseBtn.click(()=>{
+  assignForm.css('visibility','hidden');
+})
+assignOpenBtn.click(()=>{
+  assignForm.css('visibility','visible');
+})
