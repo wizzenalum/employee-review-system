@@ -33,9 +33,13 @@ html{
     margin:0px;
     padding:0px;
   }
-  & *{
+  *,
+  *::before,
+  *::after { 
     box-sizing: inherit;
   }
+
+
   //warning or status colors
   .green{
     color: rgb(0, 255, 0);
@@ -47,6 +51,7 @@ html{
     color: rgb(255, 251, 0);
   }
   .btn,button{
+    user-select: none;
     background-color: rgb(77, 3, 121);
     color:rgb(35, 240, 144);
     padding:3px 10px;
@@ -66,6 +71,7 @@ html{
     display: grid;
     grid-template-columns: 1fr;
     width:95%;
+    gap:2vw;
     margin:5vh auto;
   }
   // to place elements in center.
@@ -81,26 +87,71 @@ html{
   }
   .head1{
     margin:20px;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: capitalize;
   }
-
+  h2{
+    margin:10px;
+    font-size: 1.2em;
+    text-transform: capitalize;
+  }
 }
 
 
 // style for header only 
 body>header {
+  &>*{
+    display: flex;
+    flex-wrap: wrap;
+    &>*{
+      padding-left: 20px;
+    }
+  }
   background-color: rgb(8, 6, 32);
+  padding: 20px 5%;
   width:100%;
-  padding: 20px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center; 
+  height: 80px;
 }
 
 .dashboard{
   display: grid;
   grid-template-columns:minmax(300px,1fr) minmax(200px,auto);
 }
+.close,.menu{
+  visibility: hidden;
+  position:absolute;
+}
 
+
+@media screen and (max-width: 650px) {
+  .menu{
+    visibility: visible;
+  }
+  .close{
+    position: relative;
+    top:-35px;
+    left:30px;
+  }
+  .menu{
+    position: absolute;
+    top:90px;
+    right:10px;
+  }
+  .dashboard{
+    grid-template-columns: 1fr;
+  }
+  aside{
+    visibility: hidden;
+    position:absolute;
+    background-color: rgba(128, 0, 128, 0.895);
+    right:-5px;
+    padding:20px;
+    padding-top:50px;
+    top:80px;
+    min-height: calc(100vh - 80px);
+  }
+}

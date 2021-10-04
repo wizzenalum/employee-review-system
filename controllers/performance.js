@@ -22,8 +22,14 @@ module.exports.create = async function (req, res) {
 };
 
 //update performance 
-module.exports.update = function (req, res) {
-  return res.end("update performance ", {});
+module.exports.update = async function (req, res) {
+  try {
+    await Performance.findByIdAndUpdate(req.params.id,req.body);
+    return res.redirect('back');
+  } catch (error) {
+    console.log(error);
+    return res.redirect('back')
+  }
 };
 
 

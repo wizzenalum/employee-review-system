@@ -7,7 +7,7 @@ const passport = require("passport");
 const localStrategy = require('./configs/passport')
 const MongoStore = require('connect-mongo')
 
-const port = 8000;
+const port = process.env.PORT||8000;
 // creating express app instance
 const app = express();
 
@@ -27,8 +27,8 @@ app.set("layout extractStyles", true);
 app.use(express.static("assets")); // setup the
 
 // my own scss middleware to write the files to css folder if any.
-const dartScssMiddleware = require("./configs/sass-middleware");
-app.use(dartScssMiddleware("assets/scss", "assets/styles"));
+// const dartScssMiddleware = require("./configs/sass-middleware");
+// app.use(dartScssMiddleware("assets/scss", "assets/styles"));
 
 // configure the express-session library to read and write to cookies.
 // adding middle ware for the sessions
@@ -43,7 +43,7 @@ app.use(session({
   },
   store: MongoStore.create(
       {
-          mongoUrl:'mongodb://localhost/employee-review',
+          mongoUrl:'mongodb+srv://employee-system-user:employee-system-password@employee-system-0.o4qxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
           autoRemove:'disabled'
       },
       function(err){

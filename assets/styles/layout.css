@@ -32,7 +32,9 @@ html body {
   margin: 0px;
   padding: 0px;
 }
-html * {
+html *,
+html *::before,
+html *::after {
   box-sizing: inherit;
 }
 html .green {
@@ -45,6 +47,7 @@ html .yellow {
   color: #fffb00;
 }
 html .btn, html button {
+  user-select: none;
   background-color: #4d0379;
   color: #23f090;
   padding: 3px 10px;
@@ -64,6 +67,7 @@ html main {
   display: grid;
   grid-template-columns: 1fr;
   width: 95%;
+  gap: 2vw;
   margin: 5vh auto;
 }
 html .place-center {
@@ -77,21 +81,72 @@ html .place-apart {
 }
 html .head1 {
   margin: 20px;
-  font-size: 2em;
+  font-size: 1.5em;
+  text-transform: capitalize;
+}
+html h2 {
+  margin: 10px;
+  font-size: 1.2em;
   text-transform: capitalize;
 }
 
 body > header {
   background-color: #080620;
+  padding: 20px 5%;
   width: 100%;
-  padding: 20px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
+  height: 80px;
+}
+body > header > * {
+  display: flex;
+  flex-wrap: wrap;
+}
+body > header > * > * {
+  padding-left: 20px;
 }
 
 .dashboard {
   display: grid;
   grid-template-columns: minmax(300px, 1fr) minmax(200px, auto);
+}
+
+.close, .menu {
+  visibility: hidden;
+  position: absolute;
+}
+
+@media screen and (max-width: 650px) {
+  .menu {
+    visibility: visible;
+  }
+
+  .close {
+    position: relative;
+    top: -35px;
+    left: 30px;
+  }
+
+  .menu {
+    position: absolute;
+    top: 90px;
+    right: 10px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgba(128, 0, 128, 0.895);
+    right: -5px;
+    padding: 20px;
+    padding-top: 50px;
+    top: 80px;
+    min-height: calc(100vh - 80px);
+  }
 }

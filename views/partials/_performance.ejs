@@ -1,16 +1,15 @@
 <form action="/performance/create" method="post">
-    <div class="update-form">
-        <input type="hidden" defaultValue="<%= userReadUpdate._id %>" name="reviewFor" >
-        <input type="hidden" name="reviewBy" defaultValue=<%= locals.user._id %>>
-        
+    <input type="hidden" defaultValue="<%= userReadUpdate._id %>" name="reviewFor" >
+    <input type="hidden" name="reviewBy" defaultValue=<%= locals.user._id %>>
+    
+    <div class="update-form per-form">
         <div>
-            <label>Your views</label>
-            <textarea name="description" cols="30" rows="3"></textarea>
+            <textarea name="description" cols="30" rows="3">why giving this rank?</textarea>
         </div>
         <div >
             <label for="ranking">Rank 1 to 10</label>
             <input type="number" name="ranking" min="1" max="10">
         </div>
+        <button type="submit">create performance</button>
     </div>
-    <button type="submit">create</button>
 </form>

@@ -1,8 +1,9 @@
 <aside>
     <!-- if login user is admin then admin will have employee creation option -->
+    <span class="btn close">close</span>
     <%if(locals.user.userType=='admin'){%>
         <%if(locals.userReadUpdate && locals.urlPath==`/admin/${userReadUpdate.id}`){%>
-            <a href="/admin">Create employee or admin</a>
+            <a href="/admin">Create employee</a>
         <%}%>
         <!-- if the admin is on the emplloyee dashboard then link to rewie employee -->
         <%if(locals.urlPath=='/employee'){%>
@@ -27,7 +28,7 @@
     <div>
     <% if(revieweeList.length>0){%>
         <div>
-            <h1>revieweeList</h1>
+            <h1 class="head1">revieweeList</h1>
             <%for(let reviewee of revieweeList){%>
                 <div class="place-apart">
                     <a href="/admin/<%=reviewee.id%>"><%=reviewee.name%></a>

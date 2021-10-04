@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-
+const passport = require('passport')
 const performanceController = require("../controllers/performance");
 
 // athorized user will create performace for a user.
-router.post("/create", performanceController.create);
+router.post("/create",passport.autherizedAdmin, performanceController.create);
 // admin updating the performance data.
-router.post("/:id/update", performanceController.update);
+router.post("/:id/update",passport.autherizedAdmin, performanceController.update);
 //admin will delete it
-router.get("/:id/delete", performanceController.delete);
+router.get("/:id/delete",passport.autherizedAdmin, performanceController.delete);
 
 module.exports = router;

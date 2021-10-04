@@ -11,5 +11,9 @@
       <a href=""><%= user.name %></a><a href="/user/session/destroy">sign-out</a>
     <%}%>
  </div>  
- 
+ <% if(locals.urlPath!=="/"){%>
+   <span class="btn menu">menu</span>
+  <%}%>
+
+
 </header>
