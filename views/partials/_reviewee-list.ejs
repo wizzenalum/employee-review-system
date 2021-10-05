@@ -12,13 +12,14 @@
         <%}%>
         <!-- if login user is employee then he make or delete request -->
     <%}else if(locals.user.userType=='employee'){%>
-        <%= locals.user.isRequested%>
         <%if(!locals.user.isRequested){%>
+            <h3> Admin request</h3>
             <form action="/request/create" method="post">
                 <input type="hidden" name="requestBy" defaultValue="<%= userReadUpdate.id %>">
                 <button type="submit">Request to admin</button>
             </form>
         <%}else{%>
+            <h3> Admin request</h3>
             <form action="/request/<%=userReadUpdate.isRequested%>/delete" method="post">
                 <input type="hidden" name="requestBy" defaultValue="<%= userReadUpdate.id %>">
                 <button type="submit">delete Request</button>
